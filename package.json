@@ -1,0 +1,29 @@
+{
+  "name": "pomodoro_clock_fcc",
+  "version": "1.0.0",
+  "description": "My pomodoro-clock in FreeCodeCamp chalenge",
+  "main": "app.js",
+  "repository": "https://github.com/UHanczar/FreeCodeCamp-pomodoro-clock",
+  "scripts": {
+    "test": "eslint src",
+    "start": "nodemon --exec babel-node src/app.js",
+    "build": "webpack src/app.js dist/bundle.js",
+    "httpserver": "http-server -a localhost -p 8000 -c-1"
+  },
+  "author": "U. Hanchar",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-eslint": "^7.1.1",
+    "babel-preset-env": "^1.2.2",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.0",
+    "nodemon": "^1.11.0",
+    "webpack": "^2.2.1"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.23.0"
+  }
+}
