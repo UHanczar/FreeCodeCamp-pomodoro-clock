@@ -7,7 +7,10 @@
   "scripts": {
     "test": "eslint src",
     "start": "nodemon --exec babel-node src/app.js",
-    "build": "webpack src/app.js dist/bundle.js",
+    "prebuild": "del-cli dist -f",
+    "build": "webpack --watch",
+    "prod:build": "webpack -p",
+    "bundle": "yarn run prebuild && yarn run build",
     "httpserver": "http-server -a localhost -p 8000 -c-1"
   },
   "author": "U. Hanchar",
@@ -16,6 +19,7 @@
     "babel-cli": "^6.24.0",
     "babel-eslint": "^7.1.1",
     "babel-preset-env": "^1.2.2",
+    "del-cli": "^0.2.1",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",

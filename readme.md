@@ -53,3 +53,23 @@ yarn add --dev nodemon
 
 --change package.json like
 "start": "nodemon --ignore lib --exec babel-node src/app.js"
+
+--now we installing webpack
+--import features for contemporary code in webpack babel-polyfill. If you want to use some of the most recent ES features in your client code, like Promises, you need to include the Babel Polyfill before anything else in your bundle
+
+/////
+yarn add babel-polyfi
+
+--create webpack.config.babel.js
+
+--install webpack
+
+////
+yarn add -D webpack
+
+--adding del-cli for deleting dist folder before generation of code
+
+////
+ yarn add del-cli -D
+
+ // create webpack config in webpack.config.babel
