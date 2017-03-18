@@ -1,6 +1,10 @@
 import 'babel-polyfill';
 import greeting from './timer';
 
-console.log('Hello, this is react!!!');
+if (module.hot) {
+  module.hot.accept();
+}
+
+console.log('Hello, this is react');
 
 greeting();

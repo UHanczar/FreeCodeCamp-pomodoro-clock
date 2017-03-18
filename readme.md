@@ -73,3 +73,8 @@ yarn add -D webpack
  yarn add del-cli -D
 
  // create webpack config in webpack.config.babel
+
+
+ react, react-dom --save, babel-core babel-preset-es2015 babel-preset-react webpack babel-loader
+
+ presets: [es2015, react]
