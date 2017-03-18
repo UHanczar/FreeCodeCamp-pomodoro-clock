@@ -62,8 +62,6 @@ yarn add babel-polyfi
 
 --create webpack.config.babel.js
 
---install webpack
-
 ////
 yarn add -D webpack
 
@@ -72,9 +70,20 @@ yarn add -D webpack
 ////
  yarn add del-cli -D
 
- // create webpack config in webpack.config.babel
+ --create webpack config in webpack.config.babel
+
+ --cerate webpack dev server
+ /////
+ yarn add webpack-dev-server -D
+
+--installing css scss loaders
+/////
+yarn dd -D css-loader style-loader sass-loader node-sass
+
+--extract-text-webpack-plugin which can be used to extract modules into their own output files
+yarn add -D extract-text-webpack-plugin
 
 
- react, react-dom --save, babel-core babel-preset-es2015 babel-preset-react webpack babel-loader
+ react, react-dom --save,
 
  presets: [es2015, react]
