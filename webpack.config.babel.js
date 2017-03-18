@@ -2,13 +2,14 @@ import webpack from 'webpack';
 import path from 'path';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
+// at thi end uncomment extractCSS for compiling css file;
 const extractCSS = new ExtractTextPlugin('./../css/style.bundle.css');
 
 export default {
   context: path.resolve(__dirname, 'src'),
   entry: [
     'babel-polyfill',
-    './App.js'],
+    './App.jsx'],
   output: {
     path: path.resolve(__dirname, 'public/js'),
     filename: 'bundle.js'
@@ -25,14 +26,18 @@ export default {
       loader: 'react-hot-loader!babel-loader'
     }, {
       test: /\.scss$/,
-      loader: extractCSS.extract([
+      loader:
+        // extractCSS.extract(
+      [
+        'style-loader',
         'css-loader',
         'sass-loader'
-      ])
+      ]
+    // )
     }]
   },
   plugins: [
-    extractCSS,
+    // extractCSS,
     new webpack.HotModuleReplacementPlugin()
   ],
 
