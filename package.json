@@ -2,16 +2,16 @@
   "name": "pomodoro_clock_fcc",
   "version": "1.0.0",
   "description": "My pomodoro-clock in FreeCodeCamp chalenge",
-  "main": "app.js",
+  "main": "App.js",
   "repository": "https://github.com/UHanczar/FreeCodeCamp-pomodoro-clock",
   "scripts": {
     "test": "eslint src",
-    "start": "nodemon --exec babel-node src/app.js",
-    "prebuild": "del-cli dist -f",
+    "start": "nodemon --exec babel-node src/App.js",
+    "clear": "del-cli public -f",
     "build": "webpack --watch",
     "prod:build": "webpack -p",
-    "bundle": "yarn run prebuild && yarn run build",
-    "httpserver": "http-server -a localhost -p 8000 -c-1"
+    "bundle": "yarn run build",
+    "httpserver": "http-server ./ -a localhost -p 8000 -c-1 -i"
   },
   "author": "U. Hanchar",
   "license": "MIT",

@@ -1,7 +1,10 @@
 export default {
-  entry: './src/app.js',
+  entry: './src/App.js',
   output: {
-    path: './dist',
+    path: './public',
     filename: 'bundle.js'
+  },
+  module: {
+    loaders: [{}]
   }
 };
