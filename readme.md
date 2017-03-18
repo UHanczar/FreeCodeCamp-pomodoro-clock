@@ -84,6 +84,11 @@ yarn dd -D css-loader style-loader sass-loader node-sass
 yarn add -D extract-text-webpack-plugin
 
 
- react, react-dom --save,
+--install react, react-dom
+/////
+yarn add react react-dom
 
- presets: [es2015, react]
+
+--install react-hot-loader
+/////
+yarn add -D react-hot-loader

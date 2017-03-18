@@ -1,7 +1,8 @@
+import webpack from 'webpack';
 import path from 'path';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
-const extractCSS = new ExtractTextPlugin('./css/style.bundle.css');
+const extractCSS = new ExtractTextPlugin('./../css/style.bundle.css');
 
 export default {
   context: path.resolve(__dirname, 'src'),
@@ -9,19 +10,19 @@ export default {
     'babel-polyfill',
     './App.js'],
   output: {
-    path: path.resolve(__dirname, 'public'),
+    path: path.resolve(__dirname, 'public/js'),
     filename: 'bundle.js'
   },
   devServer: {
     inline: true,
-    contentBase: './',
+    contentBase: './public',
     port: 3000
   },
   module: {
     loaders: [{
       test: /\.jsx?$/,
       exclude: /node_modules/,
-      loader: 'babel-loader'
+      loader: 'react-hot-loader!babel-loader'
     }, {
       test: /\.scss$/,
       loader: extractCSS.extract([
@@ -31,7 +32,8 @@ export default {
     }]
   },
   plugins: [
-    extractCSS
+    extractCSS,
+    new webpack.HotModuleReplacementPlugin()
   ],
 
   devtool: 'cheap-module-eval-source-map',
