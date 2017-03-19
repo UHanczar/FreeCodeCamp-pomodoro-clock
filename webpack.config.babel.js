@@ -24,7 +24,12 @@ export default {
       test: /\.jsx?$/,
       exclude: /node_modules/,
       loader: 'react-hot-loader!babel-loader'
-    }, {
+    },
+    {
+      test: /\.json$/,
+      loader: 'json-loader'
+    },
+    {
       test: /\.scss$/,
       loader:
         // extractCSS.extract(
