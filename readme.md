@@ -58,7 +58,7 @@ yarn add --dev nodemon
 --import features for contemporary code in webpack babel-polyfill. If you want to use some of the most recent ES features in your client code, like Promises, you need to include the Babel Polyfill before anything else in your bundle
 
 /////
-yarn add babel-polyfi
+yarn add babel-polyfill
 
 --create webpack.config.babel.js
 
@@ -71,6 +71,10 @@ yarn add -D webpack
  yarn add del-cli -D
 
  --create webpack config in webpack.config.babel
+
+ --adding babel and es3025 loaders
+ /////
+  yarn add -D babel-core babel-loader babel-preset-es2015 babel-preset-react babel-preset-stage-0 
 
  --cerate webpack dev server
  /////
