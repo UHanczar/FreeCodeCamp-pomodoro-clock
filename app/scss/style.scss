@@ -1,0 +1,10 @@
+@import '~foundation-sites/scss/foundation';
+@include foundation-everything;
+
+@import './base/variables';
+
+@import './components/container';
+@import './components/header';
+@import './components/timer';
+@import './components/counter';
+@import './components/controls';

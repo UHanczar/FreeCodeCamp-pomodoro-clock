@@ -1,15 +1,18 @@
 import webpack from 'webpack';
 import path from 'path';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-// at thi end uncomment extractCSS for compiling css file;
+// at the end uncomment extractCSS for compiling css file;
 const extractCSS = new ExtractTextPlugin('./../css/style.bundle.css');
 
 export default {
-  context: path.resolve(__dirname, 'src'),
+  context: path.resolve(__dirname, 'app'),
   entry: [
     'babel-polyfill',
-    './App.jsx'],
+    'script-loader!jquery/dist/jquery.min.js',
+    'script-loader!foundation-sites/dist/js/foundation.min.js',
+    './App.js'],
   output: {
     path: path.resolve(__dirname, 'public/js'),
     filename: 'bundle.js'
@@ -17,7 +20,8 @@ export default {
   devServer: {
     inline: true,
     contentBase: './public',
-    port: 3000
+    port: 3000,
+    historyApiFallback: true
   },
   module: {
     loaders: [{
@@ -43,7 +47,10 @@ export default {
   },
   plugins: [
     // extractCSS,
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({
+      template: 'index.html'
+    })
   ],
 
   devtool: 'cheap-module-eval-source-map',

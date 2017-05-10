@@ -18,10 +18,11 @@ Create a .babelrc file at the root of your project, which is a JSON file for you
 NOW IT DOESN'T UNDERATAND 'import' YET;
 
 ESLINT
+--install eslint
 Check out Airbnb's most recent instructions to install the config package and all its dependencies correctly. As of 2017-02-03, they recommend using the following command in your terminal: slint-config-airbnb, eslint-plugin-import, eslint-plugin-jsx-a11y, and eslint-plugin-react
 
 //////
-yarn add --dev eslint-config-airbnb@latest
+yarn add --dev eslint eslint-config-airbnb@latest
 
 because it installs only eslint-config-airbnb, so you should install these too
 
@@ -74,7 +75,7 @@ yarn add -D webpack
 
  --adding babel and es3025 loaders
  /////
-  yarn add -D babel-core babel-loader babel-preset-es2015 babel-preset-react babel-preset-stage-0 
+  yarn add -D babel-core babel-loader babel-preset-es2015 babel-preset-react babel-preset-stage-0
 
  --cerate webpack dev server
  /////

@@ -16,12 +16,17 @@
     "linebreak-style": [2, "windows"],
     "semi": [1, "always"],
     "no-debugger": 0,
-    "no-console": 1,
+    "no-console": 0,
     "new-cap": 0,
     "strict": 0,
     "no-underscore-dangle": 0,
     "no-use-before-define": 0,
-    "eol-last": 0,
-    "comma-dangle": [0, 'always']
+    "eol-last": 1,
+    "comma-dangle": [0, "always"],
+    "class-methods-use-this": [2, { "exceptMethods": ["formatSeconds", "render"] }],
+    "jsx-quotes": ["error", "prefer-single"],
+    "react/prefer-stateless-function": 0,
+    "react/prefer-es6-class": 0,
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
   }
 }
