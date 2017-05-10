@@ -16,7 +16,7 @@ class Controls extends Component {
     }
   }
 
-  // we can do it like in addTime return () => { ... }
+  // we can do it like in addTime return () => { ... } like we did in clearTimer
   substractTime(newVal) {
     // console.log('Substract 1 minute');
     return () => {
@@ -25,30 +25,32 @@ class Controls extends Component {
   }
 
   clearTimer() {
-    console.log('clear timer');
+    // return () => {
+      this.props.onClearTimer();
+    // }
   }
 
   render() {
-    const { rest } = this.props;
-    const { session } = this.props;
+    const { restControl } = this.props;
+    const { sessionControl } = this.props;
     return (
       <div className='controls'>
         <div className='btn-group'>
           <p>break length</p>
           <div className='button-counter'>
             <button className='button primary hollow' onClick={this.substractTime('rest')}>-</button>
-            <span>{rest}</span>
+            <span>{restControl}</span>
             <button className='button primary hollow rest' onClick={this.addTime('rest')}>+</button>
           </div>
         </div>
 
-        <button className='button alert hollow clear' onClick={this.clearTimer}>Clear</button>
+        <button className='button alert hollow clear' onClick={() => this.clearTimer()}>Clear</button>
 
         <div className='btn-group'>
           <p>session length</p>
           <div className='button-counter'>
             <button className='button primary hollow' onClick={this.substractTime('session')}>-</button>
-            <span>{session}</span>
+            <span>{sessionControl}</span>
             <button className='button primary hollow' onClick={this.addTime('session')}>+</button>
           </div>
         </div>
@@ -58,10 +60,11 @@ class Controls extends Component {
 }
 
 Controls.propTypes = {
-  rest: PropTypes.number.isRequired,
-  session: PropTypes.number.isRequired,
+  restControl: PropTypes.number.isRequired,
+  sessionControl: PropTypes.number.isRequired,
   onAddTime: PropTypes.func.isRequired,
-  onSubstractTime: PropTypes.func.isRequired
+  onSubstractTime: PropTypes.func.isRequired,
+  onClearTimer: PropTypes.func.isRequired
 };
 
 export default Controls;

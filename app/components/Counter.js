@@ -5,13 +5,12 @@ class Counter extends Component {
   constructor(props) {
     super(props);
 
-    this.formatSeconds = this.formatSeconds.bind(this);
+    // this.formatSeconds = this.formatSeconds.bind(this);
   }
 
-  formatSeconds(totalMinutes) {
-    const totalSeconds = totalMinutes * 60;
+  formatSeconds(totalSeconds) {
     let seconds = totalSeconds % 60;
-    let minutes = Math.floor(totalMinutes - seconds);
+    let minutes = Math.floor(totalSeconds - seconds) / 60;
 
     if (seconds < 10) {
       seconds = `0${seconds}`;
@@ -24,10 +23,15 @@ class Counter extends Component {
     return `${minutes}:${seconds}`;
   }
 
+  startCounter() {
+    // console.log('Counter is started.');
+    this.props.onStartCounter();
+  }
+
   render() {
     const { count } = this.props;
     return (
-      <div className='counter'>
+      <div className='counter' onClick={() => this.startCounter()}>
         <h3 className='clock-text'>Work</h3>
         <span className='clock-text'>
           {this.formatSeconds(count)}
