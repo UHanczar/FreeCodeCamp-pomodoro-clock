@@ -8,9 +8,10 @@ class Counter extends Component {
     this.formatSeconds = this.formatSeconds.bind(this);
   }
 
-  formatSeconds(totalSeconds) {
+  formatSeconds(totalMinutes) {
+    const totalSeconds = totalMinutes * 60;
     let seconds = totalSeconds % 60;
-    let minutes = Math.floor(totalSeconds - seconds);
+    let minutes = Math.floor(totalMinutes - seconds);
 
     if (seconds < 10) {
       seconds = `0${seconds}`;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Controls extends Component {
   constructor(props) {
@@ -13,13 +14,14 @@ class Controls extends Component {
     return () => {
       this.props.onAddTime(newVal);
     }
-
   }
 
   // we can do it like in addTime return () => { ... }
   substractTime(newVal) {
     // console.log('Substract 1 minute');
-    this.props.onSubstractTime(newVal);
+    return () => {
+      this.props.onSubstractTime(newVal);
+    }
   }
 
   clearTimer() {
@@ -34,7 +36,7 @@ class Controls extends Component {
         <div className='btn-group'>
           <p>break length</p>
           <div className='button-counter'>
-            <button className='button primary hollow' onClick={() => this.substractTime('rest')}>-</button>
+            <button className='button primary hollow' onClick={this.substractTime('rest')}>-</button>
             <span>{rest}</span>
             <button className='button primary hollow rest' onClick={this.addTime('rest')}>+</button>
           </div>
@@ -45,7 +47,7 @@ class Controls extends Component {
         <div className='btn-group'>
           <p>session length</p>
           <div className='button-counter'>
-            <button className='button primary hollow' onClick={() => this.substractTime('session')}>-</button>
+            <button className='button primary hollow' onClick={this.substractTime('session')}>-</button>
             <span>{session}</span>
             <button className='button primary hollow' onClick={this.addTime('session')}>+</button>
           </div>
@@ -54,5 +56,12 @@ class Controls extends Component {
     );
   }
 }
+
+Controls.propTypes = {
+  rest: PropTypes.number.isRequired,
+  session: PropTypes.number.isRequired,
+  onAddTime: PropTypes.func.isRequired,
+  onSubstractTime: PropTypes.func.isRequired
+};
 
 export default Controls;

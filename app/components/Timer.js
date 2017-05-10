@@ -9,7 +9,8 @@ class Timer extends Component {
 
     this.state = {
       rest: 5,
-      session: 25
+      session: 25,
+      work: true
     };
 
     this.handleOnAddTime = this.handleOnAddTime.bind(this);
@@ -57,10 +58,11 @@ class Timer extends Component {
   render() {
     const { rest } = this.state;
     const { session } = this.state;
+    const { work } = this.state;
 
     return (
       <div className='timer'>
-        <Counter />
+        <Counter count={work ? session : rest} />
         <Controls rest={rest} session={session} onAddTime={this.handleOnAddTime} onSubstractTime={this.handleOnSubstractTime} />
       </div>
     );
