@@ -51,68 +51,86 @@ class Timer extends Component {
   handleStart() {
     this.start = setInterval(() => {
       let newCount;
-      if (this.state.work) {
-        newCount = this.state.session - 1;
+      const { work, rest, restControl, session, sessionControl } = this.state;
+      if (work) {
+        newCount = session - 1;
         this.setState({
           session: newCount
         });
       } else {
-        newCount = this.state.rest - 1;
+        newCount = rest - 1;
         this.setState({
           rest: newCount
         });
       }
 
       if (newCount <= 0) {
-        clearInterval(this.start);
-        this.start = undefined;
+        // clearInterval(this.start);
+        // this.start = undefined;
+        this.setState({
+          work: !work,
+          rest: restControl * 60,
+          session: sessionControl * 60
+        });
       }
     }, 1000);
   }
 
   handleAddTime(newVal) {
     // console.log('this', this);
-    if (newVal === 'rest') {
-      const newRest = this.state.rest + 60;
-      const newRestControl = this.state.restControl + 1;
-      this.setState(() => {
-        return {
-          rest: newRest,
-          restControl: newRestControl
-        };
-      });
-    } else if (newVal === 'session') {
-      const newSession = this.state.session + 60;
-      const newSessionControl = this.state.sessionControl + 1;
-      this.setState(() => {
-        return {
-          session: newSession,
-          sessionControl: newSessionControl
-        };
-      });
+    if (!this.state.countdown) {
+      if (newVal === 'rest') {
+        const newRestControl = this.state.restControl + 1;
+        const newRest = newRestControl * 60;
+
+        this.setState(() => {
+          return {
+            rest: newRest,
+            restControl: newRestControl
+          };
+        });
+      } else if (newVal === 'session') {
+        const newSessionControl = this.state.sessionControl + 1;
+        const newSession = newSessionControl * 60;
+
+        this.setState(() => {
+          return {
+            session: newSession,
+            sessionControl: newSessionControl
+          };
+        });
+      }
     }
   }
 
   handleSubstractTime(newVal) {
     // console.log('Substracting 1');
-    if (newVal === 'rest') {
-      const newRest = this.state.rest - 60;
-      const newRestControl = this.state.restControl - 1;
-      this.setState(() => {
-        return {
-          rest: newRest,
-          restControl: newRestControl
-        };
-      });
-    } else if (newVal === 'session') {
-      const newSession = this.state.session - 60;
-      const newSessionControl = this.state.sessionControl - 1;
-      this.setState(() => {
-        return {
-          session: newSession,
-          sessionControl: newSessionControl
-        };
-      });
+    if (!this.state.countdown) {
+      if (newVal === 'rest') {
+        if (this.state.restControl > 0) {
+          const newRestControl = this.state.restControl - 1;
+          const newRest = newRestControl * 60;
+
+          this.setState(() => {
+            return {
+              rest: newRest,
+              restControl: newRestControl
+            };
+          });
+        }
+      } else if (newVal === 'session') {
+        if (this.state.sessionControl > 0) {
+          const newSessionControl = this.state.sessionControl - 1;
+          const newSession = newSessionControl * 60;
+
+          this.setState(() => {
+            return {
+              session: newSession,
+              sessionControl: newSessionControl
+            };
+          });
+        }
+      }
     }
   }
 
@@ -144,6 +162,7 @@ class Timer extends Component {
     return (
       <div className='timer'>
         <Counter
+          work={work ? 'Work' : 'Break!'}
           count={work ? session : rest} onStartCounter={this.handleStartCounter}
         />
 

@@ -6,7 +6,7 @@ class Container extends Component {
   render() {
     return (
       <div className='row'>
-        <div className='column small-centered medium-8 large-6 container'>
+        <div className='container'>
           <h1 className='header-text'>Free Code Camp</h1>
           <Timer />
         </div>

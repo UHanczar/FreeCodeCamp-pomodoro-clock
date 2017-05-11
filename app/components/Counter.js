@@ -29,10 +29,10 @@ class Counter extends Component {
   }
 
   render() {
-    const { count } = this.props;
+    const { count, work } = this.props;
     return (
       <div className='counter' onClick={() => this.startCounter()}>
-        <h3 className='clock-text'>Work</h3>
+        <h3 className='clock-text'>{ work }</h3>
         <span className='clock-text'>
           {this.formatSeconds(count)}
         </span>
@@ -46,7 +46,8 @@ Counter.defaultProps = {
 };
 
 Counter.propTypes = {
-  count: PropTypes.number.isRequired
+  count: PropTypes.number.isRequired,
+  work: PropTypes.string.isRequired
 };
 
 export default Counter;
