@@ -97,3 +97,5 @@ yarn add react react-dom
 --install react-hot-loader
 /////
 yarn add -D react-hot-loader
+
+className={count < 60 ? 'counter end-count' : 'counter'

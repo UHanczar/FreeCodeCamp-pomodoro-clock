@@ -13,7 +13,8 @@ class Timer extends Component {
       session: 1500,
       sessionControl: 25,
       work: true,
-      countdown: false
+      countdown: false,
+      color: 40
     };
 
     this.handleAddTime = this.handleAddTime.bind(this);
@@ -24,8 +25,8 @@ class Timer extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log('s: ', this.state.session);
-    console.log('w: ', this.state.work);
+    // console.log('s: ', this.state.session);
+    // console.log('w: ', this.state.work);
 
     if (this.state.countdown !== prevState.countdown) {
       if (this.state.countdown) {
@@ -38,9 +39,9 @@ class Timer extends Component {
   }
 
   handleStartCounter() {
-    console.log('Start Timer!!!!');
+    // console.log('Start Timer!!!!');
     const { countdown } = this.state;
-    console.log(countdown);
+    // console.log(countdown);
     this.setState(() => {
       return {
         countdown: !countdown
@@ -51,7 +52,7 @@ class Timer extends Component {
   handleStart() {
     this.start = setInterval(() => {
       let newCount;
-      const { work, rest, restControl, session, sessionControl } = this.state;
+      const { work, rest, restControl, session, sessionControl, color } = this.state;
       if (work) {
         newCount = session - 1;
         this.setState({
@@ -64,13 +65,20 @@ class Timer extends Component {
         });
       }
 
+      if (newCount < 60) {
+        this.setState({
+          color: color + 1
+        });
+      }
+
       if (newCount <= 0) {
         // clearInterval(this.start);
         // this.start = undefined;
         this.setState({
           work: !work,
           rest: restControl * 60,
-          session: sessionControl * 60
+          session: sessionControl * 60,
+          color: 40
         });
       }
     }, 1000);
@@ -135,7 +143,7 @@ class Timer extends Component {
   }
 
   handleClearTimer() {
-    console.log('it works!!!');
+    // console.log('it works!!!');
 
     clearInterval(this.start);
     this.start = undefined;
@@ -158,10 +166,12 @@ class Timer extends Component {
     const { restControl } = this.state;
     const { sessionControl } = this.state;
     const { work } = this.state;
+    const { color } = this.state;
 
     return (
       <div className='timer'>
         <Counter
+          color={color}
           work={work ? 'Work' : 'Break!'}
           count={work ? session : rest} onStartCounter={this.handleStartCounter}
         />

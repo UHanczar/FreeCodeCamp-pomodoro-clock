@@ -29,9 +29,11 @@ class Counter extends Component {
   }
 
   render() {
-    const { count, work } = this.props;
+    const { count, work, color } = this.props;
+    const opacity = parseFloat(`0.${color}`, 10).toString();
+    const alarmColor = `rgba(235, 86, 22, ${opacity})`;
     return (
-      <div className='counter' onClick={() => this.startCounter()}>
+      <div className='counter' style={count < 60 ? { backgroundColor: alarmColor, border: '2px solid rgba(94, 11, 11, 1)' } : {}} onClick={() => this.startCounter()}>
         <h3 className='clock-text'>{ work }</h3>
         <span className='clock-text'>
           {this.formatSeconds(count)}

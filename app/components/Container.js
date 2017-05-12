@@ -5,11 +5,9 @@ import Timer from './Timer';
 class Container extends Component {
   render() {
     return (
-      <div className='row'>
-        <div className='container'>
-          <h1 className='header-text'>Free Code Camp</h1>
-          <Timer />
-        </div>
+      <div className='container'>
+        <h1 className='header-text'>FCC Pomodoro Clock</h1>
+        <Timer />
       </div>
     );
   }
